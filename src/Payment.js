@@ -9,6 +9,7 @@ import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./StateProvider";
+import { db } from "./firebase";
 
 function Payment() {
   const history = useHistory();
@@ -28,7 +29,7 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: "post",
-        url: "/payments/create?total=${getBasketTotal(basket) * 100}",
+        url: "/payments/create?total=" + getBasketTotal(basket) * 100,
       });
       setClientSecret(response.data.clientSecret);
     };
@@ -50,9 +51,25 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         //paymentIntent = payment confirmation
+
+        db.collection("users")
+          .doc(user?.id)
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
+
         history.replace("/orders");
       });
   };
@@ -113,7 +130,7 @@ function Payment() {
                   value={getBasketTotal(basket)}
                   displayType={"text"}
                   thousandSeparator={true}
-                  prefix={"$"}
+                  prefix={"₹"}
                 />
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
