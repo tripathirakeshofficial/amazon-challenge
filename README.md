@@ -1,8 +1,20 @@
+### Stripe Test Card for Payment(Indian Users)
+
+4000003560000008
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `firebase init`
+
+Initiates the firebase
+
+### `firebase emulators:start`
+
+Starts the firebase database
 
 ### `npm start`
 
@@ -66,7 +78,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### Stripe Test Card for Payment(Indian Users)
-
-4000003560000008
