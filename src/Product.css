@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: white;
   z-index: 1;
-  align-items: center;
+  align-items: normal;
   justify-content: flex-end;
   margin: 10px;
   padding: 20px;
@@ -14,16 +14,19 @@
 
 .product_rating {
   display: flex;
+  height: 20px;
+  margin-top: 5px;
 }
 
 .product > img {
-  max-height: 200px;
+  height: 200px;
   width: 100%;
   object-fit: contain;
   margin-bottom: 15px;
 }
 
 .product_price {
+  height: 20px;
   margin-top: 5px;
 }
 
@@ -33,9 +36,22 @@
   margin-top: 10px;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
+  height: 29px;
 }
 
 .product_info {
-  height: 100px;
+  height: 120px;
   margin-bottom: 15px;
+}
+
+.product_title {
+  height: 48px;
+  white-space: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product_title:hover {
+  height: 72px;
+  overflow: visible;
 }

@@ -1,3 +1,9 @@
+### The Forntend is deplyed at
+
+https://challenge-c679c.web.app/
+
+(run the firebase database locally)
+
 ### Stripe Test Card for Payment(Indian Users)
 
 4000003560000008

@@ -2,6 +2,7 @@
 import React from "react";
 import "./Product.css";
 import { useStateValue } from "./StateProvider";
+import CurrencyFormat from "react-currency-format";
 
 function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
@@ -25,8 +26,14 @@ function Product({ id, title, image, price, rating }) {
       <div className="product_info">
         <p className="product_title">{title}</p>
         <p className="product_price">
-          <strong>₹</strong>
-          <strong>{price}</strong>
+          <CurrencyFormat
+            renderText={(price) => <strong>{price}</strong>}
+            decimalScale={2}
+            value={price}
+            displayType={"text"}
+            thousandSeparator={true}
+            prefix={"₹"}
+          />
         </p>
         <div className="product_rating">
           {Array(rating)
