@@ -1,4 +1,4 @@
-### The Forntend is deplyed at
+### The Forntend is deployed at
 
 https://challenge-c679c.web.app/
 
